@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import * as S from './ExerciseList.styles';
+// import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
 import Button from '../UI/Button/Button';
+import { Content } from '../UI/Content/Content.styles';
+import Grid from '../UI/Grid/Grid';
 
 function ExerciseList(props) {
   if (props.items.length === 0) {
@@ -19,11 +21,18 @@ function ExerciseList(props) {
   }
 
   return (
-    <S.ExerciseList>
-      {props.items.map((skillObj) => (
-        <Exercise key={skillObj.id} {...skillObj} onDelete={props.onDelete} />
-      ))}
-    </S.ExerciseList>
+    <Content>
+      <Grid>
+        {props.items &&
+          props.items.map((skillObj) => (
+            <Exercise
+              key={skillObj.id}
+              {...skillObj}
+              onDelete={props.onDelete}
+            />
+          ))}
+      </Grid>
+    </Content>
   );
 }
 

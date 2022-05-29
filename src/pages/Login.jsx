@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/UI/Button';
-import { InputBox } from '../components/InputBox';
-import Content from '../components/Content/Content';
+import { InputBox } from '../components/UI/InputBox';
+import Content from '../components/UI/Content/Content';
 import { Header } from '../components/Header';
 
 const Login = () => {
