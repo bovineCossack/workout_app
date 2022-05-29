@@ -6,8 +6,8 @@ import Button from '../UI/Button/Button';
 import { Content } from '../UI/Content/Content.styles';
 import Grid from '../UI/Grid/Grid';
 
-function ExerciseList(props) {
-  if (props.items.length === 0) {
+function ExerciseList({ items, onDelete }) {
+  if (items.length === 0) {
     <div>
       <h2>There are no exercises to display...</h2>
       <p>
@@ -21,16 +21,14 @@ function ExerciseList(props) {
   }
 
   return (
-    // <Content>
-    //   <Grid>
-    <>
-      {props.items.length > 0 &&
-        props.items.map((exObj) => (
-          <Exercise key={exObj.id} {...exObj} onDelete={props.onDelete} />
-        ))}
-    </>
-    //   </Grid>
-    // </Content>
+    <Content>
+      <Grid>
+        <>
+          {items.length > 0 &&
+            items.map((exObj) => <Exercise key={exObj.id} {...exObj} />)}
+        </>
+      </Grid>
+    </Content>
   );
 }
 

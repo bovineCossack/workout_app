@@ -24,11 +24,11 @@ const Home = () => {
   }
   return (
     <Content>
-      {/* <Header>
+      <Header>
         <Link to="/" className="home">
           Home
         </Link>
-      </Header> */}
+      </Header>
       <h2>Your Exercises</h2>
       <ExerciseList items={data} onDelete={deleteHandler} />
     </Content>
