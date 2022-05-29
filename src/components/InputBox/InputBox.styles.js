@@ -6,3 +6,7 @@ border-radius: 1rem;
 border: none;
 width: 100%;
 `;
+
+export const Label = styled.label`
+color: #000;
+`

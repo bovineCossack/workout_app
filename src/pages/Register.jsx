@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../components/Button';
+import { InputBox } from '../components/InputBox';
 import Content from '../components/Content/Content';
 import { Header } from '../components/Header';
 
 const Register = () => {
   const [userData, setUserData] = useState({
-    username: '',
     email: '',
     password: '',
   });
@@ -23,7 +23,7 @@ const Register = () => {
           headers: {
             'Content-type': 'application/json',
           },
-          body: JSON.stringify(userDetails),
+          body: JSON.stringify(userData),
         }
       );
       const data = await res.json();
@@ -47,7 +47,23 @@ const Register = () => {
       </Header>
       <Content>
         <form onSubmit={onRegister}>
-          {/* .map setUserData({...userDetails}) here */}
+          <InputBox
+            name="email"
+            placeholder="your@email.com"
+            label="Email"
+            type="email"
+            handleChange={(value) => setUserData({ ...userData, email: value })}
+          />
+          <InputBox
+            name="password"
+            placeholder="Password"
+            label="Password"
+            type="password"
+            handleChange={(value) =>
+              setUserData({ ...userData, password: value })
+            }
+          />
+          <Button>Register</Button>
         </form>
       </Content>
     </>
