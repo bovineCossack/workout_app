@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   async function getData() {
-    const exercisesFromDb = await getFetch('/exercises');
+    const exercisesFromDb = await getFetch('v1/exercises');
     setData(exercisesFromDb);
   }
   function deleteHandler(exerciseIdToDelete) {

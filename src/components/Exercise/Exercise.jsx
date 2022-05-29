@@ -9,6 +9,7 @@ const Exercise = ({ id, name, category1, category2, onDelete }) => {
       name={name}
       category1={category1}
       category2={category2}
+      onDelete={onDelete}
     ></S.Exercise>
   );
 };

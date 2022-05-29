@@ -3,7 +3,7 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 export async function getFetch(resource) {
     try {
         const token = localStorage.getItem('token');
-        const resp = await fetch(`${BASE_URL}/${resource}`, {
+        const resp = await fetch(`http://localhost:8080/${resource}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
 

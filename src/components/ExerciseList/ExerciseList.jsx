@@ -21,18 +21,16 @@ function ExerciseList(props) {
   }
 
   return (
-    <Content>
-      <Grid>
-        {props.items &&
-          props.items.map((skillObj) => (
-            <Exercise
-              key={skillObj.id}
-              {...skillObj}
-              onDelete={props.onDelete}
-            />
-          ))}
-      </Grid>
-    </Content>
+    // <Content>
+    //   <Grid>
+    <>
+      {props.items.length > 0 &&
+        props.items.map((exObj) => (
+          <Exercise key={exObj.id} {...exObj} onDelete={props.onDelete} />
+        ))}
+    </>
+    //   </Grid>
+    // </Content>
   );
 }
 
