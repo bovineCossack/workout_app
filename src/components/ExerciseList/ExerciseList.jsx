@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
 
-const ExerciseList = ({ exercises, handleClick }) => {
+const ExerciseList = ({ exercises }) => {
   return (
     <S.ExerciseList>
       {exercises &&
@@ -16,3 +16,5 @@ const ExerciseList = ({ exercises, handleClick }) => {
     </S.ExerciseList>
   );
 };
+
+export default ExerciseList;
