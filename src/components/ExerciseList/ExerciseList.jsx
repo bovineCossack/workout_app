@@ -1,20 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
+import Button from '../UI/Button/Button';
 
-const ExerciseList = ({ exercises }) => {
+function ExerciseList(props) {
+  if (props.items.length === 0) {
+    <div>
+      <h2>There are no exercises to display...</h2>
+      <p>
+        Please
+        <Link to={'/add'}>
+          <Button>Add</Button>
+        </Link>
+        your first exercise!
+      </p>
+    </div>;
+  }
+
   return (
     <S.ExerciseList>
-      {exercises &&
-        exercises.map((exercise) => (
-          <Exercise>
-            <S.ExerciseName>{`${exercise.name}`}</S.ExerciseName>
-            <S.ExerciseCategory>{`Primary muscle group: ${exercise.category1}`}</S.ExerciseCategory>
-            <S.ExerciseCategory>{`Secondary muscle group: ${exercise.category2}`}</S.ExerciseCategory>
-          </Exercise>
-        ))}
+      {props.items.map((skillObj) => (
+        <Exercise key={skillObj.id} {...skillObj} onDelete={props.onDelete} />
+      ))}
     </S.ExerciseList>
   );
-};
+}
 
 export default ExerciseList;

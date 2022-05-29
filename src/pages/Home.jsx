@@ -2,20 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import ExerciseList from '../components/ExerciseList/ExerciseList';
-
-const getData = async () => {
-  try {
-    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/v1/exercises`, {
-      headers: {
-        authorization: `Bearer: ${localStorage.getItem('token')}`,
-      },
-    });
-    const data = await res.json();
-    return data;
-  } catch (error) {
-    return error;
-  }
-};
+import { getFetch } from '../helpers/helper';
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -27,7 +14,15 @@ const Home = () => {
     },
     []
   );
-
+  async function getData() {
+    const exercisesFromDb = await getFetch('/exercises');
+    setData(exercisesFromDb);
+  }
+  function deleteHandler(exerciseIdToDelete) {
+    setData((prevState) => {
+      return prevState.filter((exObj) => exObj.id !== exerciseIdToDelete);
+    });
+  }
   return (
     <>
       <Header>
@@ -35,7 +30,8 @@ const Home = () => {
           Home
         </Link>
       </Header>
-      {data.length > 0 && <ExerciseList exercises={data} />}
+      <h2>Your Exercises</h2>
+      <ExerciseList items={data} onDelete={deleteHandler} />
     </>
   );
 };
