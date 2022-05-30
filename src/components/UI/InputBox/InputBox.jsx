@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as S from './InputBox.styles';
 
-const InputBox = ({ name, placeholder, label, type, handleChange }) => {
+const InputBox = ({
+  name,
+  placeholder,
+  label,
+  type,
+  handleChange,
+  children,
+}) => {
   const [value, setValue] = useState('');
 
   const onChange = (e) => {
@@ -11,7 +18,7 @@ const InputBox = ({ name, placeholder, label, type, handleChange }) => {
   };
 
   return (
-    <>
+    <S.Container>
       <S.Label htmlFor={name}>{label}</S.Label>
       <S.InputBox
         name={name}
@@ -21,7 +28,7 @@ const InputBox = ({ name, placeholder, label, type, handleChange }) => {
         type={type}
         onChange={onChange}
       />
-    </>
+    </S.Container>
   );
 };
 

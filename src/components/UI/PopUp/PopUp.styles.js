@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const PopUp = styled.div`
-  background: #eee;
-  border-radius: 1rem;
+  background: #fff;
   padding: 1rem;
+  border: 1px red solid;
   position: relative;
 `;
 
