@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import Content from '../components/UI/Content/Content';

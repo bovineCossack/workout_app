@@ -35,7 +35,7 @@ const Login = () => {
           );
           const data = await res.json();
 
-          if (data.token) {
+          if (data) {
             localStorage.setItem('token', data.token);
             return navigation('/');
           }
