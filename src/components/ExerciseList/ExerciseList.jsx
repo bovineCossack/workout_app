@@ -1,35 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-// import * as S from './ExerciseList.styles';
+import React, { useEffect, useState } from 'react';
+
+import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
-import Button from '../UI/Button/Button';
-import { Content } from '../UI/Content/Content.styles';
 import Grid from '../UI/Grid/Grid';
 
-function ExerciseList({ items, onDelete }) {
-  if (items.length === 0) {
-    <div>
-      <h2>There are no exercises to display...</h2>
-      <p>
-        Please
-        <Link to={'/add'}>
-          <Button>Add</Button>
-        </Link>
-        your first exercise!
-      </p>
-    </div>;
-  }
+const getData = async () => {
+  const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/exercises`, {
+    headers: {
+      authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  });
+  const data = await res.json();
+  return data;
+};
+
+const ExerciseList = () => {
+  const [data, setData] = useState([]);
+  useEffect(
+    () => async () => {
+      setData(await getData());
+    },
+    []
+  );
 
   return (
-    <Content>
-      <Grid>
-        <>
-          {items.length > 0 &&
-            items.map((exObj) => <Exercise key={exObj.id} {...exObj} />)}
-        </>
-      </Grid>
-    </Content>
+    <Grid>
+      {!data && <p>Loading...</p>}
+      {Object.entries(data).map((exObj) => (
+        <Exercise key={exObj.id}>
+          <S.ExName>{exObj.name}</S.ExName>
+          <S.ExCategory>{exObj.category1}</S.ExCategory>
+          <S.ExCategory>{exObj.category2}</S.ExCategory>
+        </Exercise>
+      ))}
+    </Grid>
   );
-}
+};
 
 export default ExerciseList;

@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './Header.styles';
-import Navigation from '../Navigation/Navigation';
+import { Link } from 'react-router-dom';
 
-const links = [
-  { title: 'Start', link: '/' },
-  { title: 'Login', link: '/login' },
-  { title: 'Register', link: '/register' },
-  { title: 'Workout Plans', link: '/plans' },
-];
-
-const Header = ({ children }) => {
+const Header = () => {
   return (
     <S.Header>
-      {children}
-      <Navigation links={links} />
+      <Link to={'/'} style={{ textDecoration: 'none' }}>
+        Home
+      </Link>
+      <Link to={'/register'} style={{ textDecoration: 'none' }}>
+        Register
+      </Link>
+      <Link to={'/login'} style={{ textDecoration: 'none' }}>
+        Login
+      </Link>
     </S.Header>
   );
 };

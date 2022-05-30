@@ -1,73 +1,65 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '../components/UI/Button';
-import { InputBox } from '../components/UI/InputBox';
+import { useNavigate } from 'react-router-dom';
+import Button from '../components/UI/Button/Button';
+import InputBox from '../components/UI/InputBox/InputBox';
 import Content from '../components/UI/Content/Content';
-import { Header } from '../components/Header';
+import Header from '../components/Header/Header';
+import { PopUp } from '../components/UI/PopUp/PopUp.styles';
 
 const Login = () => {
-  const [userData, setUserData] = useState({
+  const [error, setError] = useState(false);
+  const [userData, setuserData] = useState({
     email: '',
     password: '',
   });
 
-  const navigate = useNavigate();
+  const navigation = useNavigate();
 
-  const onLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/v1/auth/login`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        }
-      );
-      const data = await res.json();
-
-      alert(data.msg || data.err || 'Unknown error');
-      if (data.msg === 'Incorrect data entered. Please revise.' || data.error) {
-        return;
-      } else {
-        navigate('/');
-      }
-    } catch (error) {
-      alert(error.message || 'Unknown error');
-    }
-  };
   return (
-    <>
-      <Header>
-        <Link to="/" className="home">
-          Home
-        </Link>
-      </Header>
-      <Content>
-        <form onSubmit={onLogin}>
-          <InputBox
-            name="email"
-            placeholder="your@email.com"
-            label="Email"
-            type="email"
-            handleChange={(value) => setUserData({ ...userData, email: value })}
-          />
-          <InputBox
-            name="password"
-            placeholder="Password"
-            label="Password"
-            type="password"
-            handleChange={(value) =>
-              setUserData({ ...userData, password: value })
+    <Content>
+      <Header />
+      {error && <PopUp handleClose={() => setError(false)}>{error}</PopUp>}
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          const res = await fetch(
+            `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(userData),
             }
-          />
-          <Button>Login</Button>
-        </form>
-      </Content>
-    </>
+          );
+          const data = await res.json();
+
+          if (data.token) {
+            localStorage.setItem('token', data.token);
+            return navigation('/');
+          }
+
+          setError(data.err || 'Unexpected error');
+        }}
+      >
+        <InputBox
+          label="Email"
+          type="email"
+          name="email"
+          placeholder="email"
+          handleChange={(email) => setuserData({ ...userData, email })}
+        />
+        <InputBox
+          label="Password"
+          type="password"
+          name="pass"
+          placeholder="password"
+          handleChange={(password) => setuserData({ ...userData, password })}
+        />
+        <Button type="submit">Login</Button>
+      </form>
+    </Content>
   );
 };
-
 export default Login;
