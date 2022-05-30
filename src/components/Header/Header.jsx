@@ -15,6 +15,9 @@ const Header = () => {
       <Link to={'/login'} style={{ textDecoration: 'none' }}>
         Login
       </Link>
+      <Link to={'/add'} style={{ textDecoration: 'none' }}>
+        Add
+      </Link>
     </S.Header>
   );
 };

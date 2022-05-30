@@ -19,12 +19,11 @@ const InputBox = ({
 
   return (
     <S.Container>
-      <S.Label htmlFor={name}>{label}</S.Label>
+      <S.Label>{label}</S.Label>
       <S.InputBox
         name={name}
         placeholder={placeholder}
         value={value}
-        // label={label}
         type={type}
         onChange={onChange}
       />
