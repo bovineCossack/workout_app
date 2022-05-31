@@ -22,11 +22,10 @@ const ExerciseList = () => {
     },
     []
   );
-
   return (
     <Grid>
       {!data && <p>Loading...</p>}
-      {Object.entries(data).map((exObj) => (
+      {data.data.map((exObj) => (
         <Exercise key={exObj.id}>
           <S.ExName>{exObj.name}</S.ExName>
           <S.ExCategory>{exObj.category1}</S.ExCategory>
