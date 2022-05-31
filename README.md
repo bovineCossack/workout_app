@@ -27,7 +27,7 @@
 - view exercises by muscle group
 - add exercises with rep/set info into workout plans
 
-#
+
 
 ## Created using:
 
