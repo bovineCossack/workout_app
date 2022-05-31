@@ -37,3 +37,4 @@
 - Styled Components
 
 ### Made by T.S. for TypeScript5 @ CodeAcademy
+Link to project backend: https://github.com/bovineCossack/workout_app_backend
