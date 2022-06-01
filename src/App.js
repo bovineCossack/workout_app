@@ -33,17 +33,7 @@ function App() {
     <AuthContext.Provider value={currentContextValue}>
       <Header />
       <Routes>
-        <Route exact path='/' element={gotToken ? <Home /> : <LoginText>
-
-          <h2>You are not logged in</h2>
-          <p>Please log in</p>
-          <Link to="/login">
-            <Button>Login</Button>
-          </Link>
-          <p>No account? Please register</p>
-          <Link to="/register">
-            <Button>Register</Button>
-          </Link> </LoginText>} />
+        <Route exact path='/' element={gotToken ? <Home /> : <LoginText />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/add' element={<Add />} />
