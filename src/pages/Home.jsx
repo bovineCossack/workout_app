@@ -1,4 +1,3 @@
-import Header from '../components/Header/Header';
 import ExerciseList from '../components/ExerciseList/ExerciseList';
 import Content from '../components/UI/Content/Content';
 

@@ -1,16 +1,42 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = process.env.REACT_APP_SERVER_URL;
 
 export async function getFetch(resource) {
     try {
-        const token = localStorage.getItem('token');
-        const resp = await fetch(`http://localhost:8080/${resource}`, {
-            headers: { Authorization: `Bearer ${token}` },
-        });
-
+        const resp = await fetch(`${process.env.REACT_APP_BASE_URL}/${resource}`);
         const dataInJs = await resp.json();
         return dataInJs;
     } catch (error) {
         console.log('getFetch error:', error);
+        return false;
+    }
+}
+
+export const getFetchWithToken = async (resource) => {
+    try {
+        const token = localStorage.getItem('token');
+        const resp = await fetch(`${BASE_URL}/${resource}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        const dataFromApi = await resp.json();
+        return dataFromApi;
+    } catch (error) {
+        return false;
+    }
+};
+
+export async function deleteFetch(resource, id) {
+    try {
+        const token = localStorage.getItem('token');
+        const resp = await fetch(`${process.env.REACT_APP_BASE_URL}/${resource}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const dataInJS = await resp.json();
+        return dataInJS;
+    } catch (error) {
         return false;
     }
 }
