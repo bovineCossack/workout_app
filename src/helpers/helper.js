@@ -2,7 +2,7 @@ const BASE_URL = process.env.REACT_APP_SERVER_URL;
 
 export async function getFetch(resource) {
     try {
-        const resp = await fetch(`${process.env.REACT_APP_BASE_URL}/${resource}`);
+        const resp = await fetch(`${BASE_URL}/${resource}`);
         const dataInJs = await resp.json();
         return dataInJs;
     } catch (error) {
@@ -15,7 +15,10 @@ export const getFetchWithToken = async (resource) => {
     try {
         const token = localStorage.getItem('token');
         const resp = await fetch(`${BASE_URL}/${resource}`, {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer: ${token}`
+            },
         });
         const dataFromApi = await resp.json();
         return dataFromApi;
@@ -27,11 +30,11 @@ export const getFetchWithToken = async (resource) => {
 export async function deleteFetch(resource, id) {
     try {
         const token = localStorage.getItem('token');
-        const resp = await fetch(`${process.env.REACT_APP_BASE_URL}/${resource}/${id}`, {
+        const resp = await fetch(`${BASE_URL}/${resource}/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer: ${token}`,
             },
         });
         const dataInJS = await resp.json();

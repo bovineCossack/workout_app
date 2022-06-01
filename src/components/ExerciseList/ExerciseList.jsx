@@ -11,7 +11,7 @@ function ExerciseList() {
   useEffect(() => {
     getData();
   }, []);
-  console.log('exerciseArr =', exerciseArr.data);
+  // console.log('exerciseArr =', exerciseArr.data);
 
   async function getData() {
     const exerciseFromDb = await getFetchWithToken('exercises');
