@@ -1,24 +1,8 @@
-import { Link } from 'react-router-dom';
-import Button from '../Button/Button';
-import Content from '../Content/Content';
+import React from 'react';
 import * as S from './LoginText.styles';
 
-function LoginText() {
-  return (
-    <Content>
-      <S.Login>
-        <h2>You are not logged in</h2>
-        <p>Please log in</p>
-        <Link to="/login">
-          <Button>Login</Button>
-        </Link>
-        <p>No account? Please register</p>
-        <Link to="/register">
-          <Button>Register</Button>
-        </Link>
-      </S.Login>
-    </Content>
-  );
+function LoginText({ children }) {
+  return <S.Login>{children}</S.Login>;
 }
 
 export default LoginText;

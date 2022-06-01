@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Header from './components/Header/Header';
 import LoginText from './components/UI/LoginText/LoginText';
 import Add from './pages/Add';
@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthContext from './store/authContext';
+import Button from './components/UI/Button/Button';
 
 
 function App() {
@@ -32,7 +33,17 @@ function App() {
     <AuthContext.Provider value={currentContextValue}>
       <Header />
       <Routes>
-        <Route exact path='/' element={gotToken ? <Home /> : <LoginText />} />
+        <Route exact path='/' element={gotToken ? <Home /> : <LoginText>
+
+          <h2>You are not logged in</h2>
+          <p>Please log in</p>
+          <Link to="/login">
+            <Button>Login</Button>
+          </Link>
+          <p>No account? Please register</p>
+          <Link to="/register">
+            <Button>Register</Button>
+          </Link> </LoginText>} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/add' element={<Add />} />
