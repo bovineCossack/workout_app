@@ -11,7 +11,7 @@ export const Default = () => (
     label="Pulling"
     name="Exercise"
     placeholder="Pull-Up"
-    onChange={() => {
+    handleChange={() => {
       //   console.log('Test');
     }}
   />

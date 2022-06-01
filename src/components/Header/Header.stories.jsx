@@ -6,4 +6,4 @@ export default {
   component: Header,
 };
 
-export const Primary = () => <Header>Workout Planner</Header>;
+export const Primary = () => <Header />;

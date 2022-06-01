@@ -8,9 +8,9 @@ const InputBox = ({
   label,
   type,
   handleChange,
-  children,
+  initValue,
 }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(initValue || '');
 
   const onChange = (e) => {
     setValue(e.target.value);
