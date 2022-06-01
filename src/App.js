@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Router } from 'react-router-dom';
+import Header from './components/Header/Header';
 import LoginText from './components/UI/LoginText/LoginText';
 import Add from './pages/Add';
 import Home from './pages/Home';
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={currentContextValue}>
+      <Header />
       <Routes>
         <Route exact path='/' element={gotToken ? <Home /> : <LoginText />} />
         <Route path='/register' element={<Register />} />

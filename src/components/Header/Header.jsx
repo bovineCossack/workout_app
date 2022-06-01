@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './Header.styles';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
     <S.Header>
-      <Link to={'/'} style={{ textDecoration: 'none' }}>
+      <NavLink to={'/'} style={{ textDecoration: 'none' }}>
         Home
-      </Link>
-      <Link to={'/register'} style={{ textDecoration: 'none' }}>
+      </NavLink>
+      <NavLink to={'/register'} style={{ textDecoration: 'none' }}>
         Register
-      </Link>
-      <Link to={'/login'} style={{ textDecoration: 'none' }}>
+      </NavLink>
+      <NavLink to={'/login'} style={{ textDecoration: 'none' }}>
         Login
-      </Link>
-      <Link to={'/add'} style={{ textDecoration: 'none' }}>
+      </NavLink>
+      <NavLink to={'/add'} style={{ textDecoration: 'none' }}>
         Add
-      </Link>
+      </NavLink>
     </S.Header>
   );
 };

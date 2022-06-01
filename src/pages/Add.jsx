@@ -17,8 +17,6 @@ const Add = () => {
 
   return (
     <Content>
-      <Header />
-
       {error && <PopUp handleClose={() => setError(false)}>{error}</PopUp>}
       <form
         onSubmit={async (e) => {
