@@ -14,14 +14,14 @@ function ExerciseList() {
   console.log('exerciseArr =', exerciseArr.data);
 
   async function getData() {
-    const exerciseFromDb = await getFetch('exercises');
+    const exerciseFromDb = await getFetchWithToken('exercises');
     setExerciseArr(exerciseFromDb);
   }
 
   return (
     <Grid>
       {!exerciseArr.data && <p>Loading...</p>}
-      {exerciseArr.daa &&
+      {exerciseArr.data &&
         exerciseArr.data.map((exObj) => (
           <Exercise key={exObj.id}>
             <S.ExName>{exObj.name}</S.ExName>
