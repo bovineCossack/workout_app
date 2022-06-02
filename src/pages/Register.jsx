@@ -3,6 +3,7 @@ import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import Content from '../components/UI/Content/Content';
 import PopUp from '../components/UI/PopUp/PopUp';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [error, setError] = useState(false);
@@ -10,6 +11,8 @@ const Register = () => {
     email: '',
     password: '',
   });
+
+  const navigation = useNavigate();
 
   return (
     <Content>
@@ -30,6 +33,9 @@ const Register = () => {
           );
           const data = await res.json();
 
+          if (data) {
+            return navigation('/login');
+          }
           setError(data.msg || data.err);
         }}
       >
