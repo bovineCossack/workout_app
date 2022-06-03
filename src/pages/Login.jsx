@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import Content from '../components/UI/Content/Content';
 import { PopUp } from '../components/UI/PopUp/PopUp.styles';
+import AuthContext from '../store/authContext';
 
 const Login = () => {
+  const contextValue = useContext(AuthContext);
   const [error, setError] = useState(false);
   const [userData, setuserData] = useState({
     email: '',
@@ -34,7 +36,8 @@ const Login = () => {
           const data = await res.json();
 
           if (data) {
-            localStorage.setItem('token', data.token);
+            localStorage.setItem('token', data.data);
+            contextValue.login();
             return navigation('/');
           }
 

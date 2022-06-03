@@ -11,10 +11,11 @@ export async function getFetch(resource) {
     }
 }
 
-export const getFetchWithToken = async (resource) => {
+export async function getFetchWithToken(resource) {
     try {
         const token = localStorage.getItem('token');
         const resp = await fetch(`${BASE_URL}/${resource}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer: ${token}`
@@ -53,7 +54,7 @@ export async function sendFetch(resource, dataToPost) {
         });
         const dataInJS = await resp.json();
         if (dataInJS.msg === 'Successfully logged in') {
-            localStorage.setItem('token', dataInJS.token);
+            localStorage.setItem('token', dataInJS.data);
         }
         return dataInJS;
     } catch (error) {
@@ -75,7 +76,7 @@ export async function sendFetchWithToken(resource, dataToPost) {
         });
         const dataInJS = await resp.json();
         if (dataInJS.msg === 'Successfully logged in') {
-            localStorage.setItem('token', dataInJS.token);
+            localStorage.setItem('token', dataInJS.data);
         }
         return dataInJS;
     } catch (error) {
