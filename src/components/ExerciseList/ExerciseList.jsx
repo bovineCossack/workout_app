@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
 import Grid from '../UI/Grid/Grid';
-import { getFetchWithToken } from '../../helpers/helper';
+import { deleteFetch, getFetchWithToken } from '../../helpers/helper';
+import Button from '../UI/Button/Button';
 
-function ExerciseList() {
+function ExerciseList(props) {
   const [exerciseArr, setExerciseArr] = useState([]);
 
   useEffect(() => {
@@ -15,6 +16,13 @@ function ExerciseList() {
   async function getData() {
     const exerciseFromDb = await getFetchWithToken('exercises');
     setExerciseArr(exerciseFromDb);
+  }
+
+  async function deleteHandler(id) {
+    const delResult = await deleteFetch('exercises', id);
+    if (delResult) {
+      props.onDelete();
+    }
   }
 
   return (
@@ -28,6 +36,7 @@ function ExerciseList() {
             <S.ExCategory>
               Secondary Muscle Group: {exObj.category2}
             </S.ExCategory>
+            <Button onClick={() => deleteHandler(exObj.id)}>Delete</Button>
           </Exercise>
         ))}
     </Grid>

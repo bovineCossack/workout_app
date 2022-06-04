@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import Content from '../components/UI/Content/Content';
-import { PopUp } from '../components/UI/PopUp/PopUp.styles';
+import PopUp from '../components/UI/PopUp/PopUp';
+import { sendAddFetch } from '../helpers/helper';
 
 const Add = () => {
   const [error, setError] = useState(false);
@@ -20,25 +21,13 @@ const Add = () => {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-
-          const res = await fetch(
-            `${process.env.REACT_APP_SERVER_URL}/v1/exercises`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(exData),
-            }
-          );
-          const data = await res.json();
-
-          if (data) {
-            localStorage.setItem('token', data.token);
-            return navigation('/');
+          const res = await sendAddFetch('exercises', exData);
+          if (res.success === true) {
+            navigation('/', { replace: true });
           }
-
-          setError(data.err || 'Unexpected error');
+          if (res.success === false) {
+            return false;
+          }
         }}
       >
         <InputBox

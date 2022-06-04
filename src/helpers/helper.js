@@ -100,3 +100,22 @@ export async function sendAuthFetch(resource, dataForAuth) {
         return false;
     }
 }
+
+export async function sendAddFetch(resource, dataToAdd) {
+    try {
+        const token = localStorage.getItem('token');
+        const resp = await fetch(`${BASE_URL}/${resource}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+
+            body: JSON.stringify(dataToAdd),
+        });
+        const dataInJS = await resp.json();
+        return dataInJS;
+    } catch (error) {
+        return false;
+    }
+}

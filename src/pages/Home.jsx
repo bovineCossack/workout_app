@@ -14,13 +14,10 @@ const Home = () => {
     authCtx.logout();
     setIsLoggedIn(false);
     localStorage.removeItem('token');
-    navigate('/login', { redirect: true });
+    // navigate('/', { redirect: true });
     console.log('logout === logout');
   }
 
-  useEffect(() => {
-    console.log('isloggedin', isLoggedIn);
-  }, [isLoggedIn]);
   return (
     <Content>
       <h2>Your Exercises</h2>
