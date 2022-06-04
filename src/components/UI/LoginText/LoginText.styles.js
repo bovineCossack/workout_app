@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Login = styled.div`
+  font-family: 'Kdam Thmor Pro', sans-serif;
+
     background-color: #fff;
     margin: 0 auto;
     max-width: 400px;

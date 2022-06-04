@@ -14,7 +14,7 @@ const Home = () => {
     authCtx.logout();
     setIsLoggedIn(false);
     localStorage.removeItem('token');
-    // navigate('/', { redirect: true });
+    navigate('/', { redirect: true });
     console.log('logout === logout');
   }
 

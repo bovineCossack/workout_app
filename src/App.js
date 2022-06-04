@@ -22,11 +22,11 @@ function App() {
     setIsLoggedIn(false);
     localStorage.removeItem('token')
     navigate('/login', { redirect: true });
-    console.log('logout === logout');
+    // console.log('logout === logout');
   }
   function login() {
     setIsLoggedIn(true);
-    console.log('login === login');
+    // console.log('login === login');
 
   }
 
@@ -36,7 +36,7 @@ function App() {
     login,
   };
 
-  useEffect(() => { console.log('isloggedin', isLoggedIn) }, [isLoggedIn]);
+  // useEffect(() => { console.log('isloggedin', isLoggedIn) }, [isLoggedIn]);
 
   return (
     <AuthContext.Provider value={currentContextValue}>

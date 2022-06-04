@@ -6,7 +6,7 @@ import Grid from '../UI/Grid/Grid';
 import { deleteFetch, getFetchWithToken } from '../../helpers/helper';
 import Button from '../UI/Button/Button';
 
-function ExerciseList(props) {
+function ExerciseList() {
   const [exerciseArr, setExerciseArr] = useState([]);
 
   useEffect(() => {
@@ -21,13 +21,12 @@ function ExerciseList(props) {
   async function deleteHandler(id) {
     const delResult = await deleteFetch('exercises', id);
     if (delResult) {
-      props.onDelete();
+      getData();
     }
   }
 
   return (
     <Grid>
-      {!exerciseArr.data && <p>Loading...</p>}
       {exerciseArr.data &&
         exerciseArr.data.map((exObj) => (
           <Exercise key={exObj.id}>
@@ -36,7 +35,7 @@ function ExerciseList(props) {
             <S.ExCategory>
               Secondary Muscle Group: {exObj.category2}
             </S.ExCategory>
-            <Button onClick={() => deleteHandler(exObj.id)}>Delete</Button>
+            <Button handleClick={() => deleteHandler(exObj.id)}>Delete</Button>
           </Exercise>
         ))}
     </Grid>
