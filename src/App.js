@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthContext from './store/authContext';
 import { useContext } from 'react';
-import PrivateRoute from './helpers/PrivateRoute';
+import LoginText from './components/UI/LoginText/LoginText';
 
 
 function App() {
@@ -42,10 +42,10 @@ function App() {
     <AuthContext.Provider value={currentContextValue}>
       <Header />
       <Routes>
-        <Route exact path='/' element={<PrivateRoute> <Home /> </PrivateRoute>} />
+        <Route exact path='/' element={currentContextValue.isLoggedIn ? <Home /> : <LoginText />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/add' element={<PrivateRoute> <Add /> </PrivateRoute>} />
+        <Route path='/add' element={currentContextValue.isLoggedIn ? <Add /> : <LoginText />} />
       </Routes>
     </AuthContext.Provider>
   );
