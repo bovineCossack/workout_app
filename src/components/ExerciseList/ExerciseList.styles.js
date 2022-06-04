@@ -1,8 +1,13 @@
 import styled from "styled-components"
 
-export const ExCategory = styled.h3`
+export const ExName = styled.p`
 color: black;
+text-transform: uppercase;
+background-color: purple;
+width: inherit;
+max-height: inherit;
 `
-export const ExName = styled.h3`
+
+export const ExCategory = styled.div`
 color: black;
 `

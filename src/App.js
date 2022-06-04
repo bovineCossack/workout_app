@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthContext from './store/authContext';
 import { useContext } from 'react';
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './helpers/PrivateRoute';
 
 
 function App() {

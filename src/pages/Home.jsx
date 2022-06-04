@@ -14,7 +14,9 @@ const Home = () => {
         onClick={() => {
           contextValue.logout();
         }}
-      />
+      >
+        Logout
+      </Button>
     </Content>
   );
 };
