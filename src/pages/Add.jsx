@@ -17,13 +17,12 @@ const Add = () => {
 
   return (
     <Content>
-      {error && <PopUp handleClose={() => setError(false)}>{error}</PopUp>}
       <form
-        onSubmit={async (e) => {
+        onSubmit={(e) => {
           e.preventDefault();
-          const res = await sendAddFetch('exercises', exData);
+          const res = sendAddFetch('exercises', exData);
           if (res.success === true) {
-            navigation('/', { replace: true });
+            navigation('/', { redirect: true });
           }
           if (res.success === false) {
             return false;

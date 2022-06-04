@@ -22,13 +22,6 @@ const Home = () => {
     <Content>
       <h2>Your Exercises</h2>
       <ExerciseList />
-      <Button
-        onClick={() => {
-          logout();
-        }}
-      >
-        Logout
-      </Button>
     </Content>
   );
 };
