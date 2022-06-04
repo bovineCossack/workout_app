@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import LoginText from './components/UI/LoginText/LoginText';
 import Add from './pages/Add';
@@ -7,18 +7,20 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthContext from './store/authContext';
-import Button from './components/UI/Button/Button';
 import { useContext } from 'react';
+import PrivateRoute from './components/PrivateRoute';
 
 
 function App() {
-  // const gotToken = localStorage.getItem('token');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const contextValue = useContext(AuthContext);
+  let navigate = useNavigate();
+
 
 
   function logout() {
     setIsLoggedIn(false);
+    localStorage.removeItem('token')
+    navigate('/login', { redirect: true });
     console.log('logout === logout');
   }
   function login() {
@@ -39,10 +41,10 @@ function App() {
     <AuthContext.Provider value={currentContextValue}>
       <Header />
       <Routes>
-        <Route exact path='/' element={contextValue.isLoggedIn === true ? <Home /> : <LoginText />} />
+        <Route exact path='/' element={<PrivateRoute> <Home /> </PrivateRoute>} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/add' element={<Add />} />
+        <Route path='/add' element={<PrivateRoute> <Add /> </PrivateRoute>} />
       </Routes>
     </AuthContext.Provider>
   );
