@@ -1,62 +1,90 @@
-import React, { useState } from 'react';
-import Button from '../components/UI/Button/Button';
-import InputBox from '../components/UI/InputBox/InputBox';
-import Content from '../components/UI/Content/Content';
-import PopUp from '../components/UI/PopUp/PopUp';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { sendAuthFetch } from '../helpers/helper';
+import AuthContext from '../store/authContext';
+import Button from '../components/UI/Button/Button';
+// import input from '../components/UI/input/input';
+import Content from '../components/UI/Content/Content';
 
-const Register = () => {
-  const [error, setError] = useState(false);
-  const [userData, setuserData] = useState({
-    email: '',
-    password: '',
-  });
+const initErrors = {
+  email: '',
+  password: '',
+};
 
-  const navigation = useNavigate();
+function Register() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [errorObj, setErrorObj] = useState(initErrors);
+  // const authCtx = useContext(AuthContext);
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    const isErrorEmpty = Object.values(errorObj).every((el) => el === '');
+    if (!isErrorEmpty) {
+      setIsError(true);
+    }
+  }, [email, password, errorObj]);
+  async function sendFetch() {
+    const RegisterObj = {
+      email: email,
+      password: password,
+    };
+    const resp = await sendAuthFetch('/register', RegisterObj);
+    console.log('resp ===', resp);
+    if (resp.success === true) {
+      navigate('/login', { replace: true });
+    }
+    if (resp.success === false) {
+      return false;
+    }
+  }
+
+  async function registerHandler(e) {
+    setIsError(false);
+    setErrorObj(initErrors);
+    e.preventDefault();
+    sendFetch();
+    if (email.trim() === '') {
+      setErrorObj((prevState) => ({
+        ...prevState,
+        email: 'Email cannot be blank',
+      }));
+    }
+    if (password.trim() === '') {
+      setErrorObj((prevState) => ({
+        ...prevState,
+        password: 'Password cannot be blank',
+      }));
+    }
+    if (isError) {
+      return;
+    }
+  }
 
   return (
     <Content>
-      {error && <PopUp handleClose={() => setError(false)}>{error}</PopUp>}
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-
-          const res = await fetch(
-            `${process.env.REACT_APP_SERVER_URL}/auth/register`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(userData),
-            }
-          );
-          const data = await res.json();
-
-          if (data) {
-            return navigation('/login');
-          }
-          setError(data.msg || data.err);
-        }}
-      >
-        <InputBox
-          label="Email"
+      <h1>Register</h1>
+      <form onSubmit={registerHandler}>
+        {isError && <h3>Please check the form</h3>}
+        <input
+          onChange={(e) => setEmail(e.target.value)}
           type="email"
+          placeholder="Enter you email here"
           name="email"
-          placeholder="email"
-          handleChange={(email) => setuserData({ ...userData, email })}
         />
-        <InputBox
-          label="Password"
+        {errorObj.email && <p>{errorObj.email}</p>}
+        <input
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
-          name="pass"
-          placeholder="password"
-          handleChange={(password) => setuserData({ ...userData, password })}
+          placeholder="Enter your password here"
+          name="password"
         />
+        {errorObj.password && <p>{errorObj.password}</p>}
         <Button type="submit">Register</Button>
       </form>
     </Content>
   );
-};
+}
 
 export default Register;

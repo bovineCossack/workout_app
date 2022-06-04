@@ -2,7 +2,7 @@ const BASE_URL = process.env.REACT_APP_SERVER_URL;
 
 export async function getFetch(resource) {
     try {
-        const resp = await fetch(`${BASE_URL}/${resource}`);
+        const resp = await fetch(`${BASE_URL}/v1/${resource}`);
         const dataInJs = await resp.json();
         return dataInJs;
     } catch (error) {
@@ -81,6 +81,22 @@ export async function sendFetchWithToken(resource, dataToPost) {
         return dataInJS;
     } catch (error) {
         console.log('sendFetch error', error);
+        return false;
+    }
+}
+
+export async function sendAuthFetch(resource, dataForAuth) {
+    try {
+        const resp = await fetch(`${BASE_URL}/auth/${resource}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataForAuth),
+        });
+        const dataInJS = await resp.json();
+        return dataInJS;
+    } catch (error) {
         return false;
     }
 }

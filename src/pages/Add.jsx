@@ -22,7 +22,7 @@ const Add = () => {
           e.preventDefault();
 
           const res = await fetch(
-            `${process.env.REACT_APP_SERVER_URL}/exercises`,
+            `${process.env.REACT_APP_SERVER_URL}/v1/exercises`,
             {
               method: 'POST',
               headers: {
