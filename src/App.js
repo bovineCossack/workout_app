@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
-import LoginText from './components/UI/LoginText/LoginText';
 import Add from './pages/Add';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -14,10 +13,12 @@ import PrivateRoute from './components/PrivateRoute';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   let navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
 
 
 
   function logout() {
+    authCtx.logout();
     setIsLoggedIn(false);
     localStorage.removeItem('token')
     navigate('/login', { redirect: true });

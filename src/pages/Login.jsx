@@ -38,7 +38,7 @@ const Login = () => {
           if (data) {
             localStorage.setItem('token', data.data);
             contextValue.login();
-            return navigation('/');
+            navigation('/');
           }
 
           setError(data.err || 'Unexpected error');
