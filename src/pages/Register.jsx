@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { sendAuthFetch } from '../helpers/helper';
 import AuthContext from '../store/authContext';
 import Button from '../components/UI/Button/Button';
-// import input from '../components/UI/input/input';
-import Content from '../components/UI/Content/Content';
+import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
+import InputBox from '../components/UI/InputBox/InputBox';
 
 const initErrors = {
   email: '',
@@ -63,19 +63,19 @@ function Register() {
   }
 
   return (
-    <Content>
+    <ContentWrapper>
       <h1>Register</h1>
       <form onSubmit={registerHandler}>
         {isError && <h3>Please check the form</h3>}
-        <input
-          onChange={(e) => setEmail(e.target.value)}
+        <InputBox
+          onChange={(e) => setEmail(e)}
           type="email"
           placeholder="Enter you email here"
           name="email"
         />
         {errorObj.email && <p>{errorObj.email}</p>}
-        <input
-          onChange={(e) => setPassword(e.target.value)}
+        <InputBox
+          onChange={(e) => setPassword(e)}
           type="password"
           placeholder="Enter your password here"
           name="password"
@@ -83,7 +83,7 @@ function Register() {
         {errorObj.password && <p>{errorObj.password}</p>}
         <Button type="submit">Register</Button>
       </form>
-    </Content>
+    </ContentWrapper>
   );
 }
 

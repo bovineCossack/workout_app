@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
-import Content from '../components/UI/Content/Content';
-import PopUp from '../components/UI/PopUp/PopUp';
+import Content from '../components/RightContent/RightContent';
 import { sendAddFetch } from '../helpers/helper';
 
 const Add = () => {

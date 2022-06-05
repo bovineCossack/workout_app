@@ -4,7 +4,7 @@ import { sendAuthFetch } from '../helpers/helper';
 import AuthContext from '../store/authContext';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
-import Content from '../components/UI/Content/Content';
+import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
 
 const initErrors = {
   email: '',
@@ -70,7 +70,7 @@ function Login() {
   }
 
   return (
-    <Content>
+    <ContentWrapper>
       <h1>Login</h1>
       <form onSubmit={loginHandler}>
         {isError && <h3>Please check the fields</h3>}
@@ -90,7 +90,7 @@ function Login() {
         {errorObj.password && <p>{errorObj.password}</p>}
         <Button type="submit">Login</Button>
       </form>
-    </Content>
+    </ContentWrapper>
   );
 }
 

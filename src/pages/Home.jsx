@@ -1,12 +1,22 @@
 import ExerciseList from '../components/ExerciseList/ExerciseList';
-import Content from '../components/UI/Content/Content';
+import Hero from '../components/Hero/Hero';
+import LeftContent from '../components/LeftContent/LeftContent';
+import FlexBox from '../components/UI/FlexBox/FlexBox';
+import RightContent from '../components/RightContent/RightContent';
 
 const Home = () => {
   return (
-    <Content>
-      <h2>Your Exercises</h2>
-      <ExerciseList />
-    </Content>
+    <FlexBox>
+      <LeftContent>
+        <Hero
+          title="Welcome to your workout app!"
+          text="Here is your current exercise database:"
+        />
+      </LeftContent>
+      <RightContent>
+        <ExerciseList />
+      </RightContent>
+    </FlexBox>
   );
 };
 

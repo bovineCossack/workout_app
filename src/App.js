@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import AuthContext from './store/authContext';
 import { useContext } from 'react';
 import LoginText from './components/UI/LoginText/LoginText';
+import './App.css';
 
 
 function App() {
