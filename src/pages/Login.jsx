@@ -39,7 +39,7 @@ function Login() {
       navigate('/', { replace: true });
     }
     if (resp.success === false) {
-      console.log(`err: 'Incorrect email or password'`);
+      setIsError(true);
       return false;
     }
   }
@@ -62,7 +62,10 @@ function Login() {
       }));
     }
     if (isError) {
-      return;
+      setErrorObj(() => ({
+        email: 'Email or password incorrect',
+        password: 'Email or password incorrect',
+      }));
     }
   }
 
@@ -70,7 +73,7 @@ function Login() {
     <Content>
       <h1>Login</h1>
       <form onSubmit={loginHandler}>
-        {isError && <h3>Please check the form</h3>}
+        {isError && <h3>Please check the fields</h3>}
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
