@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
-import Content from '../components/RightContent/RightContent';
 import { sendAddFetch } from '../helpers/helper';
+import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
 
 const Add = () => {
   const [error, setError] = useState(false);
@@ -15,7 +15,7 @@ const Add = () => {
   const navigation = useNavigate();
 
   return (
-    <Content>
+    <ContentWrapper>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -51,7 +51,7 @@ const Add = () => {
         />
         <Button type="submit">Add Exercise</Button>
       </form>
-    </Content>
+    </ContentWrapper>
   );
 };
 
