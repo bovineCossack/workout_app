@@ -8,5 +8,5 @@ border: none;
 color: #000;
 padding: 0.5rem;
 border: 5px rgba(0, 0, 0, 0.22) solid;
-
+border-radius: 1rem;
 `;

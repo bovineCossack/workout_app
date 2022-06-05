@@ -19,10 +19,12 @@ const Header = () => {
 
   return (
     <S.Header>
-      <NavLink to={'/'} style={{ textDecoration: 'none' }}>
-        Home
-      </NavLink>
-      <NavLink to={'/register'} style={{ textDecoration: 'none' }}>
+      <S.Logo src="logo.png"></S.Logo>
+      <S.Nav to={'/'}>Home</S.Nav>
+      <S.Nav to={'/register'}>Register</S.Nav>
+      <S.Nav to={'/login'}>Login</S.Nav>
+      <S.Nav to={'/add'}>Add</S.Nav>
+      {/* <NavLink to={'/register'} style={{ textDecoration: 'none' }}>
         Register
       </NavLink>
       <NavLink to={'/login'} style={{ textDecoration: 'none' }}>
@@ -30,7 +32,7 @@ const Header = () => {
       </NavLink>
       <NavLink to={'/add'} style={{ textDecoration: 'none' }}>
         Add
-      </NavLink>
+      </NavLink> */}
       {authCtx.isLoggedIn === true && (
         <Button
           handleClick={() => {
