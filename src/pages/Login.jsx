@@ -31,7 +31,7 @@ function Login() {
       email: email,
       password: password,
     };
-    const resp = await sendAuthFetch('/login', loginObj);
+    const resp = await sendAuthFetch('login', loginObj);
     console.log('resp ===', resp);
     if (resp.success === true) {
       localStorage.setItem('token', resp.data);
@@ -75,14 +75,14 @@ function Login() {
       <form onSubmit={loginHandler}>
         {isError && <h3>Please check the fields</h3>}
         <InputBox
-          onChange={(e) => setEmail(e.target.value)}
+          handleChange={(e) => setEmail(e)}
           type="email"
           placeholder="Enter you email here"
           name="email"
         />
         {errorObj.email && <p>{errorObj.email}</p>}
         <InputBox
-          onChange={(e) => setPassword(e.target.value)}
+          handleChange={(e) => setPassword(e)}
           type="password"
           placeholder="Enter your password here"
           name="password"
