@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import * as S from './ExerciseList.styles';
 import Exercise from '../Exercise/Exercise';
-import Grid from '../UI/Grid/Grid';
 import { deleteFetch, getFetchWithToken } from '../../helpers/helper';
 import Button from '../UI/Button/Button';
+import FlexBox from '../UI/FlexBox/FlexBox';
 
 function ExerciseList() {
   const [exerciseArr, setExerciseArr] = useState([]);
@@ -26,7 +26,7 @@ function ExerciseList() {
   }
 
   return (
-    <Grid>
+    <FlexBox>
       {exerciseArr.data &&
         exerciseArr.data.map((exObj) => (
           <Exercise key={exObj.id}>
@@ -38,7 +38,7 @@ function ExerciseList() {
             <Button handleClick={() => deleteHandler(exObj.id)}>Delete</Button>
           </Exercise>
         ))}
-    </Grid>
+    </FlexBox>
   );
 }
 

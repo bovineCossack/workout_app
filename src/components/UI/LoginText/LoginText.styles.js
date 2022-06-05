@@ -8,6 +8,6 @@ export const Login = styled.div`
     max-width: 400px;
     border: 1px solid black;
     border-radius: 10px;
-    padding-bottom: 15px;
+    padding: 15px;
     box-shadow: 5px -3px 3px 1px rgb(216, 225, 225);
 `;

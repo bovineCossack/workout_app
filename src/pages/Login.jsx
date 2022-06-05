@@ -74,14 +74,14 @@ function Login() {
       <h1>Login</h1>
       <form onSubmit={loginHandler}>
         {isError && <h3>Please check the fields</h3>}
-        <input
+        <InputBox
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Enter you email here"
           name="email"
         />
         {errorObj.email && <p>{errorObj.email}</p>}
-        <input
+        <InputBox
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="Enter your password here"

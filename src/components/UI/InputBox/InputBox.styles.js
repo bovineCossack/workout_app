@@ -6,7 +6,7 @@ background: #fff;
 `;
 
 export const Label = styled.label`
-color: #000;
+color: 	rgb(0, 28, 48);
 `
 export const Container = styled.div`
 display: flex;

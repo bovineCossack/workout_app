@@ -12,10 +12,10 @@ const InputBox = ({
 }) => {
   const [value, setValue] = useState(initValue || '');
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-    handleChange(e.target.value);
-  };
+  // const onChange = (e) => {
+  //   setValue(e.target.value);
+  //   handleChange(e.target.value);
+  // };
 
   return (
     <S.Container>
@@ -25,7 +25,7 @@ const InputBox = ({
         placeholder={placeholder}
         value={value}
         type={type}
-        onChange={onChange}
+        onChange={handleChange}
       />
     </S.Container>
   );
