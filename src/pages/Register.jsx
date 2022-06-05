@@ -4,6 +4,7 @@ import { sendAuthFetch } from '../helpers/helper';
 import Button from '../components/UI/Button/Button';
 import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
 import InputBox from '../components/UI/InputBox/InputBox';
+import Form from '../components/UI/Form/Form';
 
 const initErrors = {
   email: '',
@@ -60,7 +61,7 @@ function Register() {
   return (
     <ContentWrapper>
       <h1>Register</h1>
-      <form onSubmit={registerHandler}>
+      <Form onSubmit={registerHandler}>
         {isError && <h3>Please check the fields</h3>}
         <InputBox
           handleChange={(e) => setEmail(e)}
@@ -77,7 +78,7 @@ function Register() {
         />
         {errorObj.password && <p>{errorObj.password}</p>}
         <Button type="submit">Register</Button>
-      </form>
+      </Form>
     </ContentWrapper>
   );
 }

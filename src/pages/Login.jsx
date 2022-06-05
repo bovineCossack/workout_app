@@ -5,6 +5,7 @@ import AuthContext from '../store/authContext';
 import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
+import Form from '../components/UI/Form/Form';
 
 const initErrors = {
   email: '',
@@ -72,7 +73,7 @@ function Login() {
   return (
     <ContentWrapper>
       <h1>Login</h1>
-      <form onSubmit={loginHandler}>
+      <Form onSubmit={loginHandler}>
         {isError && <h3>Please check the fields</h3>}
         <InputBox
           handleChange={(e) => setEmail(e)}
@@ -89,7 +90,7 @@ function Login() {
         />
         {errorObj.password && <p>{errorObj.password}</p>}
         <Button type="submit">Login</Button>
-      </form>
+      </Form>
     </ContentWrapper>
   );
 }

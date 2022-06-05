@@ -14,7 +14,5 @@ color: 	rgb(0, 28, 48);
 export const Container = styled.div`
 font-family: 'Kdam Thmor Pro', sans-serif;
 display: flex;
-gap: 1rem;
-justify-content: start;
 align-items: center;
 `
