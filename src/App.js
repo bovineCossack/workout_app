@@ -9,6 +9,7 @@ import AuthContext from './store/authContext';
 import { useContext } from 'react';
 import LoginText from './components/UI/LoginText/LoginText';
 import './App.css';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/add' element={currentContextValue.isLoggedIn ? <Add /> : <LoginText />} />
       </Routes>
+      <Footer />
     </AuthContext.Provider>
   );
 }

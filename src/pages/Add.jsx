@@ -4,6 +4,7 @@ import Button from '../components/UI/Button/Button';
 import InputBox from '../components/UI/InputBox/InputBox';
 import { sendAddFetch } from '../helpers/helper';
 import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
+import Form from '../components/UI/Form/Form';
 
 const Add = () => {
   const [error, setError] = useState(false);
@@ -16,7 +17,7 @@ const Add = () => {
 
   return (
     <ContentWrapper>
-      <form
+      <Form
         onSubmit={(e) => {
           e.preventDefault();
           const res = sendAddFetch('exercises', exData);
@@ -50,7 +51,7 @@ const Add = () => {
           handleChange={(category2) => setExData({ ...exData, category2 })}
         />
         <Button type="submit">Add Exercise</Button>
-      </form>
+      </Form>
     </ContentWrapper>
   );
 };
