@@ -10,24 +10,21 @@
 
 - register
 - login
-- ~~protected view~~
+- protected view
 - see exercise list
 - add exercise
-- ~~delete exercise~~
+- delete exercise
 
 ## Current Issues:
 
-- exercises can be 'viewed'/added without logging in
-- exercises do not render
-- no style
-- does not redirect after registration
+- design is currently not suitable for other viewports (not responsive)
+- does not redirect after adding new exercise
 
 ## Planned Functionality:
 
 - view exercises by muscle group
 - add exercises with rep/set info into workout plans
-
-
+- add exercise category from dropdown list
 
 ## Created using:
 
