@@ -7,7 +7,6 @@ import ContentWrapper from '../components/ContentWrapper/ContentWrapper';
 import Form from '../components/UI/Form/Form';
 
 const Add = () => {
-  const [error, setError] = useState(false);
   const [exData, setExData] = useState({
     name: '',
     category1: '',

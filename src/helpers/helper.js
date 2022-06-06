@@ -6,7 +6,6 @@ export async function getFetch(resource) {
         const dataInJs = await resp.json();
         return dataInJs;
     } catch (error) {
-        console.log('getFetch error:', error);
         return false;
     }
 }
@@ -58,7 +57,6 @@ export async function sendFetch(resource, dataToPost) {
         }
         return dataInJS;
     } catch (error) {
-        console.log('sendFetch error', error);
         return false;
     }
 }
@@ -80,7 +78,6 @@ export async function sendFetchWithToken(resource, dataToPost) {
         }
         return dataInJS;
     } catch (error) {
-        console.log('sendFetch error', error);
         return false;
     }
 }
