@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.nav`
-  width: 100%;
+  box-sizing: border-box;
   display: flex;
   font-size: 200%;
   justify-content: space-around;

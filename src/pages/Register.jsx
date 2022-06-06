@@ -35,7 +35,7 @@ function Register() {
       navigate('/login', { replace: true });
     }
     if (resp.success === false) {
-      return false;
+      setIsError(true);
     }
   }
 

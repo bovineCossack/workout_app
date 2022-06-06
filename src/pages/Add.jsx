@@ -17,14 +17,15 @@ const Add = () => {
 
   return (
     <ContentWrapper>
+      <h1>Add a new exercise</h1>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
-          const res = sendAddFetch('exercises', exData);
-          if (res.success === true) {
-            navigation('/', { redirect: true });
+          const resp = sendAddFetch('exercises', exData);
+          if (resp.success === true) {
+            navigation('/', { replace: true });
           }
-          if (res.success === false) {
+          if (resp.success === false) {
             return false;
           }
         }}
