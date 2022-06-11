@@ -33,7 +33,6 @@ function Login() {
       password: password,
     };
     const resp = await sendAuthFetch('login', loginObj);
-    console.log('resp ===', resp);
     if (resp.success === true) {
       localStorage.setItem('token', resp.data);
       authCtx.login();

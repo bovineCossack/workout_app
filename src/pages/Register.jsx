@@ -30,7 +30,6 @@ function Register() {
       password: password,
     };
     const resp = await sendAuthFetch('register', RegisterObj);
-    console.log('resp ===', resp);
     if (resp.success === true) {
       navigate('/login', { replace: true });
     }
